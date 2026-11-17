@@ -39,18 +39,15 @@ BIOS = ["Medical electronics & embedded instrumentation.", "Biomedical signal pr
         "Vascular health research.", "Engineering technology for better healthcare."]
 
 def header(t):
-    defs = (f'<linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="{t["bg2"]}"/><stop offset="1" stop-color="{t["bg"]}"/></linearGradient>'
-            f'<radialGradient id="av" cx=".3" cy=".25" r=".9"><stop offset="0" stop-color="{t["blue2"]}"/><stop offset=".55" stop-color="{t["blue"]}"/><stop offset="1" stop-color="#3b5f93"/></radialGradient>')
-    style = ".b{opacity:0;animation:cyc 12s infinite}.b0{opacity:1}@keyframes cyc{0%{opacity:0}4%{opacity:1}22%{opacity:1}26%{opacity:0}100%{opacity:0}}.pop{animation:pop .8s ease backwards}@keyframes pop{from{opacity:0}}"
+    defs = (f'<linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="{t["bg2"]}"/><stop offset="1" stop-color="{t["bg"]}"/></linearGradient>')
+    style = ".b{opacity:0;animation:cyc 12s infinite}.b0{opacity:1}@keyframes cyc{0%{opacity:0}4%{opacity:1}22%{opacity:1}26%{opacity:0}100%{opacity:0}}"
     b = f'<rect x="1" y="1" width="958" height="298" rx="24" fill="url(#g)" stroke="{t["line"]}" stroke-width="2"/>'
-    b += f'<g class="pop"><circle cx="140" cy="150" r="88" fill="url(#av)" stroke="{t["line"]}" stroke-width="3"/>'
-    b += txt(140, 170, "NA", 56, t["on"], 700, "middle") + "</g>"
-    b += txt(262, 130, "Nadiya Azka", 60, t["ink"], 600, extra='letter-spacing="-2"')
-    b += (f'<text x="262" y="172" font-size="18" font-weight="500" fill="{t["ink"]}">@Azka79'
+    b += txt(72, 130, "Nadiya Azka", 60, t["ink"], 600, extra='letter-spacing="-2"')
+    b += (f'<text x="72" y="172" font-size="18" font-weight="500" fill="{t["ink"]}">@Azka79'
           f'<tspan fill="{t["muted"]}">   •   </tspan>LinkedIn<tspan fill="{t["muted"]}">   •   </tspan>Surabaya, ID</text>')
-    b += txt(262, 210, "Graduate researcher at ITS.", 19, t["ink"], 600)
+    b += txt(72, 210, "Graduate researcher at ITS.", 19, t["ink"], 600)
     for i, s in enumerate(BIOS):
-        b += txt(262, 238, s, 19, t["muted"], 400, extra=f'class="b{" b0" if i == 0 else ""}" style="animation-delay:{i*3}s"')
+        b += txt(72, 238, s, 19, t["muted"], 400, extra=f'class="b{" b0" if i == 0 else ""}" style="animation-delay:{i*3}s"')
     b += txt(900, 190, "GPA 3.75", 18, t["muted"], 500, "end") + txt(900, 218, "5+ Years in ITS", 18, t["muted"], 500, "end")
     return svg(960, 300, b, defs, style)
 
@@ -213,8 +210,6 @@ def footer(t):
 
 for m, t in T.items():
     save("header", m, header(t))
-    j, active = journey(t)
-    save("journey", m, j)
     save("h-highlights", m, heading(t, "Highlights", "Publication, awards and learning."))
     save("h-about", m, heading(t, "About"))
     save("h-skills", m, heading(t, "Technical skills", "Grouped by area."))
@@ -222,9 +217,7 @@ for m, t in T.items():
     save("facts", m, facts(t))
     save("publication", m, publication(t))
     save("skills", m, skills(t))
-    save("learning", m, learning(t))
     save("footer", m, footer(t))
-    save("gh-btn", m, gh_button(t))
     save("btn-doi", m, button(t, "Open paper (DOI)", True))
     save("btn-linkedin", m, button(t, "Message on LinkedIn", True))
     save("btn-github", m, button(t, "View GitHub", False))
@@ -233,10 +226,6 @@ def pic(name, alt, w="100%"):
     return (f'<picture><source media="(prefers-color-scheme: dark)" srcset="assets/{name}-dark.svg">'
             f'<source media="(prefers-color-scheme: light)" srcset="assets/{name}-light.svg">'
             f'<img alt="{esc(alt)}" src="assets/{name}-dark.svg"' + (f' width="{w}"' if w else '') + '></picture>')
-
-timeline = "\n".join(
-    f"| {it[0]} | {MN[it[1][1]-1]} {it[1][0]} – {'Present' if it[2] == (2026, 11) else MN[it[2][1]-1] + ' ' + str(it[2][0])} |"
-    for it in sorted(ITEMS, key=lambda x: x[1]))
 
 README = f"""<!--
   Nadiya Azka profile README.
@@ -247,30 +236,13 @@ README = f"""<!--
 
 <div align="center">
 {pic("header", "Nadiya Azka. Graduate researcher at ITS: medical electronics, embedded instrumentation, biomedical signal processing, vascular health research.")}
-<br>
-<a href="https://github.com/Azka79">{pic("gh-btn", "GitHub @Azka79", "")}</a>
 </div>
-
-<br>
-
-<div align="center">
-{pic("journey", f"Academic and professional journey heatmap, one square per month from 2021 to now. {active} active months.")}
-</div>
-
-<details>
-<summary><sub>What was active each month</sub></summary>
-
-| Role or study | Period |
-|---|---|
-{timeline}
-
-</details>
 
 <br>
 
 <div align="center">
 {pic("h-contributions", "GitHub Contributions")}
-{pic("contributions", "Live GitHub contribution graph for Azka79 over the past year: commits, pull requests, issues and reviews, rendered in the profile blue palette with dark and light variants.")}
+<a href="https://github.com/Azka79">{pic("contributions", "Live GitHub contribution graph for Azka79 over the past year: commits, pull requests, issues and reviews, rendered in the profile blue palette with dark and light variants.")}</a>
 </div>
 
 <br>
@@ -280,23 +252,6 @@ README = f"""<!--
 {pic("publication", "Publication in IEEE Access, 2026: Heartbeat Signal Imputation in Doppler Radar Using Bidirectional Long Short-Term Memory for Random Body Movement Mitigation. Azka, N., et al. Volume 14. DOI 10.1109/ACCESS.2026.37383")}
 <br>
 <a href="https://doi.org/10.1109/ACCESS.2026.37383">{pic("btn-doi", "Open paper (DOI)", "")}</a>
-</div>
-
-<details>
-<summary><sub>Copy DOI and citation</sub></summary>
-
-```text
-10.1109/ACCESS.2026.37383
-```
-
-```text
-Azka, N., et al. (2026). "Heartbeat Signal Imputation in Doppler Radar Using Bidirectional Long Short-Term Memory for Random Body Movement Mitigation." IEEE Access, Vol. 14, DOI: 10.1109/ACCESS.2026.37383.
-```
-
-</details>
-
-<div align="center">
-{pic("learning", "Awards: Gold Medalist GEMASTIK XVII 2024; Angka Nitisastro Top Tier Scholar 2026. Certifications: ISO 14971, KiCad 9 PCB design, Python diploma, research ethics, Blender 3D.")}
 </div>
 
 <br>
@@ -334,4 +289,4 @@ Interested in biomedical R&D, medical electronics, research collaboration and he
 
 with open(os.path.join(HERE, "README.md"), "w", encoding="utf-8") as f:
     f.write(README)
-print("ok", active)
+print("ok")
