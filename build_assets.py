@@ -45,7 +45,7 @@ def header(t):
     b += txt(72, 130, "Nadiya Azka", 60, t["ink"], 600, extra='letter-spacing="-2"')
     b += (f'<text x="72" y="172" font-size="18" font-weight="500" fill="{t["ink"]}">@Azka79'
           f'<tspan fill="{t["muted"]}">   •   </tspan>LinkedIn<tspan fill="{t["muted"]}">   •   </tspan>Surabaya, ID</text>')
-    b += txt(72, 210, "Graduate researcher at ITS.", 19, t["ink"], 600)
+    b += txt(72, 210, "M.Eng. Student at ITS.", 19, t["ink"], 600)
     for i, s in enumerate(BIOS):
         b += txt(72, 238, s, 19, t["muted"], 400, extra=f'class="b{" b0" if i == 0 else ""}" style="animation-delay:{i*3}s"')
     b += txt(900, 190, "GPA 3.75", 18, t["muted"], 500, "end") + txt(900, 218, "5+ Years in ITS", 18, t["muted"], 500, "end")
@@ -250,7 +250,7 @@ README = f"""<!--
 -->
 
 <div align="center">
-{pic("header", "Nadiya Azka. Graduate researcher at ITS: medical electronics, embedded instrumentation, biomedical signal processing, vascular health research.")}
+{pic("header", "Nadiya Azka. M.Eng. Student at ITS: medical electronics, embedded instrumentation, biomedical signal processing, vascular health research.")}
 </div>
 
 <br>
