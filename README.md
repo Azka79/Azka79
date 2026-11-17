@@ -6,7 +6,7 @@
 -->
 
 <div align="center">
-<picture><source media="(prefers-color-scheme: dark)" srcset="assets/header-dark.svg"><source media="(prefers-color-scheme: light)" srcset="assets/header-light.svg"><img alt="Nadiya Azka. Graduate researcher at ITS: medical electronics, embedded instrumentation, biomedical signal processing, vascular health research." src="assets/header-dark.svg" width="100%"></picture>
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/header-dark.svg"><source media="(prefers-color-scheme: light)" srcset="assets/header-light.svg"><img alt="Nadiya Azka. M.Eng. Student at ITS: medical electronics, embedded instrumentation, biomedical signal processing, vascular health research." src="assets/header-dark.svg" width="100%"></picture>
 </div>
 
 <br>
