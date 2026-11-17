@@ -20,9 +20,10 @@
 
 <div align="center">
 <picture><source media="(prefers-color-scheme: dark)" srcset="assets/h-highlights-dark.svg"><source media="(prefers-color-scheme: light)" srcset="assets/h-highlights-light.svg"><img alt="Highlights" src="assets/h-highlights-dark.svg" width="100%"></picture>
-<picture><source media="(prefers-color-scheme: dark)" srcset="assets/publication-dark.svg"><source media="(prefers-color-scheme: light)" srcset="assets/publication-light.svg"><img alt="Publication in IEEE Access, 2026: Heartbeat Signal Imputation in Doppler Radar Using Bidirectional Long Short-Term Memory for Random Body Movement Mitigation. Azka, N., et al. Volume 14. DOI 10.1109/ACCESS.2026.37383" src="assets/publication-dark.svg" width="100%"></picture>
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/publication-dark.svg"><source media="(prefers-color-scheme: light)" srcset="assets/publication-light.svg"><img alt="Publication in IEEE Access, 2026: Heartbeat Signal Imputation in Doppler Radar Using Bidirectional Long Short-Term Memory for Random Body Movement Mitigation. Azka, N., et al. Volume 14. DOI 10.1109/ACCESS.2026.3738353" src="assets/publication-dark.svg" width="100%"></picture>
 <br>
-<a href="https://doi.org/10.1109/ACCESS.2026.37383"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/btn-doi-dark.svg"><source media="(prefers-color-scheme: light)" srcset="assets/btn-doi-light.svg"><img alt="Open paper (DOI)" src="assets/btn-doi-dark.svg"></picture></a>
+<a href="https://doi.org/10.1109/ACCESS.2026.3738353"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/btn-doi-dark.svg"><source media="(prefers-color-scheme: light)" srcset="assets/btn-doi-light.svg"><img alt="Open paper (DOI)" src="assets/btn-doi-dark.svg" width="100%"></picture></a>
+<picture><source media="(prefers-color-scheme: dark)" srcset="assets/award-dark.svg"><source media="(prefers-color-scheme: light)" srcset="assets/award-light.svg"><img alt="Award: Gold Medalist, GEMASTIK XVII 2024, Division 7 ICT Scientific Paper." src="assets/award-dark.svg" width="100%"></picture>
 </div>
 
 <br>

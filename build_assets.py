@@ -136,7 +136,17 @@ def publication(t):
     for i, ln in enumerate(TITLE):
         b += txt(36, 120 + i * 40, ln, 31, t["pt"], 600, extra='letter-spacing="-0.6"')
     b += txt(36, 262 - 12, "Azka, N., et al.", 17, t["ps"], 500)
-    for x, lab, val in [(36, "Journal", "IEEE Access"), (270, "Volume", "14"), (400, "Year", "2026"), (540, "DOI", "10.1109/ACCESS.2026.37383")]:
+    for x, lab, val in [(36, "Journal", "IEEE Access"), (270, "Volume", "14"), (400, "Year", "2026"), (540, "DOI", "10.1109/ACCESS.2026.3738353")]:
+        b += txt(x, 282, lab, 13, t["pm"]) + txt(x, 308, val, 18, t["pt"], 600)
+    return svg(960, 340, b, defs)
+
+def award(t):
+    defs = f'<linearGradient id="p" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="{t["pa"]}"/><stop offset=".7" stop-color="{t["pb"]}"/></linearGradient>'
+    b = f'<rect x="1" y="1" width="958" height="338" rx="22" fill="url(#p)" stroke="{t["pa"]}" stroke-width="2"/>'
+    b += f'<rect x="36" y="32" width="250" height="32" rx="16" fill="{t["ptag"]}"/>' + txt(161, 54, "Award · GEMASTIK XVII 2024", 14, t["ptagc"], 600, "middle")
+    b += txt(36, 150, "Gold Medalist", 44, t["pt"], 600, extra='letter-spacing="-1"')
+    b += txt(36, 200, "Division 7: ICT Scientific Paper", 24, t["ps"], 500)
+    for x, lab, val in [(36, "Competition", "GEMASTIK XVII"), (330, "Division", "7"), (430, "Year", "2024"), (560, "Award", "Gold Medalist")]:
         b += txt(x, 282, lab, 13, t["pm"]) + txt(x, 308, val, 18, t["pt"], 600)
     return svg(960, 340, b, defs)
 
@@ -202,6 +212,10 @@ def gh_button(t):
     b += txt(56, 27, label, 15, t["ink"], 600)
     return svg(w, 44, b)
 
+def wide_button(t, s):
+    b = f'<rect x="1" y="1" width="958" height="42" rx="11" fill="{t["blue"]}"/>' + txt(480, 28, s, 15, t["on"], 600, "middle")
+    return svg(960, 44, b)
+
 def footer(t):
     b = f'<line x1="0" y1="2" x2="960" y2="2" stroke="{t["line"]}" stroke-width="2"/>'
     b += txt(480, 76, "Let’s build better healthcare technology", 30, t["ink"], 600, "middle", 'letter-spacing="-0.5"')
@@ -210,15 +224,16 @@ def footer(t):
 
 for m, t in T.items():
     save("header", m, header(t))
-    save("h-highlights", m, heading(t, "Highlights", "Publication, awards and learning."))
+    save("h-highlights", m, heading(t, "Highlights", "Publication and awards."))
     save("h-about", m, heading(t, "About"))
     save("h-skills", m, heading(t, "Technical skills", "Grouped by area."))
     save("h-contributions", m, heading(t, "GitHub Contributions", "Live activity: commits, pull requests, issues and reviews."))
     save("facts", m, facts(t))
     save("publication", m, publication(t))
+    save("award", m, award(t))
     save("skills", m, skills(t))
     save("footer", m, footer(t))
-    save("btn-doi", m, button(t, "Open paper (DOI)", True))
+    save("btn-doi", m, wide_button(t, "Open paper (DOI)"))
     save("btn-linkedin", m, button(t, "Message on LinkedIn", True))
     save("btn-github", m, button(t, "View GitHub", False))
 
@@ -249,9 +264,10 @@ README = f"""<!--
 
 <div align="center">
 {pic("h-highlights", "Highlights")}
-{pic("publication", "Publication in IEEE Access, 2026: Heartbeat Signal Imputation in Doppler Radar Using Bidirectional Long Short-Term Memory for Random Body Movement Mitigation. Azka, N., et al. Volume 14. DOI 10.1109/ACCESS.2026.37383")}
+{pic("publication", "Publication in IEEE Access, 2026: Heartbeat Signal Imputation in Doppler Radar Using Bidirectional Long Short-Term Memory for Random Body Movement Mitigation. Azka, N., et al. Volume 14. DOI 10.1109/ACCESS.2026.3738353")}
 <br>
-<a href="https://doi.org/10.1109/ACCESS.2026.37383">{pic("btn-doi", "Open paper (DOI)", "")}</a>
+<a href="https://doi.org/10.1109/ACCESS.2026.3738353">{pic("btn-doi", "Open paper (DOI)", "100%")}</a>
+{pic("award", "Award: Gold Medalist, GEMASTIK XVII 2024, Division 7 ICT Scientific Paper.")}
 </div>
 
 <br>
